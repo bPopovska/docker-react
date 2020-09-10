@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -f Dockerfile.dev -t bpopovska/docker-react .
+
+script:
+  - docker run CI=true bpopovska/docker-react npm run test -- --coverage
